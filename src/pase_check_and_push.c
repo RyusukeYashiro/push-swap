@@ -19,6 +19,9 @@ bool ft_numcheck(char *num)
     int i;
 
     i = 0;
+    //符号を考慮
+    if(num[i] == '-' || num[i] == '+')
+        i++;
     while(num[i])
     {
         if(!ft_isdigit(num[i]))
@@ -36,19 +39,26 @@ int pase_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
     //一時的に値を保持しておく変数
     long temp;
 
-    i = 0;  
+    //もし引数が単一文字列の場合、" 1 2 3 4"
+    //この時は文字列に含まれる数を一つの数として扱う。
+    //argsが失敗した時のメモリの解放を忘れずに行う必要がある。
+    if(args == 2)
+        args = ft_split(av[1] , 2);
+    else
+        args = av;
+    i = 1;  
     while(args[i])
     {
         temp = ft_atoi(args[i]);
-        if(!ft_numcheck(args[i]))
+        if(!ft_numcheck(args[i]) || ft_double_check(temp , args , i))
             retrun (1);
-        if(ft_double_check(temp , args , i))
-            retrun(1);
-        if (temp < -2147483648 || temp > 2147483647)
+        if (temp < INT_MIN || temp > INT_MAX)
             return(1);
-        count++;
+        (*count)++;
         ft_push_a(&stack_a , temp);
+        if(stack_a == NULL)
+            return (1);
         i++;
     }
-    retrun(0);
+    return (0);
 }
