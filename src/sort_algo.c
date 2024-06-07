@@ -1,57 +1,77 @@
 #include "../include/push_swap.h"
 
 //連結リストバージョン（もしかしたら使わないかも）
-t_stack *deepCopy(t_stack *src , t_stack **copy_a)
+// t_stack *deepCopy(t_stack *src , t_stack **copy_a)
+// {
+//     t_node *temp;
+//     t_node *newNode;
+//     t_node *copy_temp;
+
+//     if(src == NULL || src -> top == NULL)
+//         return (NULL);
+//     別の関数でcopy_aのノードはつくられてあるからここでは
+//     最初のノードの設定をしている。
+//     (*copy_a) -> top -> value = src -> top -> value;
+//     (*copy_a) -> top -> next = (*copy_a) -> top;
+//     (*copy_a) -> top -> pre = (*copy_a) -> top;
+//     上記により先に進めているため、nextになる。
+//     temp = src -> top -> next;
+//     copy_temp = (*copy_a) -> top;
+//     while(temp != src -> top)
+//     {
+//         newNode = malloc(sizeof(t_node));
+//         if(!newNode)
+//             return(free_stack(*copy_a) , NULL);
+//         新しいノードの値にvalueの値をコピーしておく。
+//         newNode -> value = temp -> value;
+//         newNodeのnext,preの設定
+//         newNode -> next = (*copy_a) -> top;
+//         newNode -> pre = copy_temp;
+//         現在の場所を保存しているcopy_tempのnext,preの設定
+//         copy_temp -> next = newNode;
+//         (*copy_a) -> top -> pre = newNode;
+//         最後のノードを更新
+//         copy_temp = newNode;
+//         temp = temp -> next;
+//     }
+//     retrun(*copy_a);
+// }
+
+//ランダムアクセスを可能にするための関数
+t_node **ft_pointer_buffer(t_stack *src , int count)
 {
+    t_node **buffer;
     t_node *temp;
-    t_node *newNode;
-    t_node *copy_temp;
+    t_node *first;
+    int i;
 
-    if(src == NULL || src -> top == NULL)
-        return (NULL);
-    //別の関数でcopy_aのノードはつくられてあるからここでは
-    //最初のノードの設定をしている。
-    (*copy_a) -> top -> value = src -> top -> value;
-    (*copy_a) -> top -> next = (*copy_a) -> top;
-    (*copy_a) -> top -> pre = (*copy_a) -> top;
-    //上記により先に進めているため、nextになる。
-    temp = src -> top -> next;
-    copy_temp = (*copy_a) -> top;
-    while(temp != src -> top)
-    {
-        newNode = malloc(sizeof(t_node));
-        if(!newNode)
-            return(free_stack(copy_a) , NULL);
-        //新しいノードの値にvalueの値をコピーしておく。
-        newNode -> value = temp -> value;
-        //newNodeのnext,preの設定
-        newNode -> next = (*copy_a) -> top;
-        newNode -> pre = copy_temp;
-        //現在の場所を保存しているcopy_tempのnext,preの設定
-        copy_temp -> next = newNode;
-        (*copy_a) -> top -> pre = newNode;
-        //最後のノードを更新
-        copy_temp = newNode;
-        temp = temp -> next;
-    }
-    retrun(*copy_a);
-}
-
-ft_pointer_array(t_stack *src , t_node ** array , int count)
-{
     if(src == NULL || src -> top == NULL)
         return ;
-    
+    buffer = malloc(count * sizeof(t_node*));
+    if(buffer == NULL)
+        return NULL;
+    temp = src -> top;
+    first = src -> top;
+    while(i < count)
+    {
+        buffer[i] = temp;
+        temp = temp -> next;
+        if(temp == first)
+            break;
+        i++;
+    } 
+    return (buffer);
 }
 
 void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count)
 {
-    char *array;
-    t_node *copy_a;
+    t_node **array;
+    t_node **array_copy;
     int pivot;
 
     //t_stack_aをランダムアクセスできる配列へと変換する関数
-    ft_pointer_array(a , &array , count);
+    array = ft_pointer_buffer(a , count);
+    array_copy = ft_pointer_buffer(a , count);
     //copy_a = init_stack();
     //deepCopy(a , &copy_a);
     pivot = 0;
@@ -65,9 +85,9 @@ void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count)
     }
     else if(count >= 7)
     {
-        ft_compress(&copy_a , count);
-        pivot = ft_search_pivot(copy_a,count);
-        ft_quick_sort(&a , &b , &hold , pivot);
+        ft_compress(a,array_copy, count);
+        pivot = ft_search_pivot(array_copy,count);
+        ft_quick_sort(a , b , hold , pivot);
     }
 
 }
