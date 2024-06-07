@@ -13,7 +13,6 @@ bool ft_double_check(int temp , char **args , int i)
     }
     return (true);
 }
-
 bool ft_numcheck(char *num) 
 {
     int i;
@@ -31,7 +30,7 @@ bool ft_numcheck(char *num)
     return (true);
 }
 
-int pase_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
+int parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
 {
     //コマンドラインの文字列を処理する関数
     char **args;
@@ -40,25 +39,31 @@ int pase_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
     long temp;
 
     //もし引数が単一文字列の場合、" 1 2 3 4"
-    //この時は文字列に含まれる数を一つの数として扱う。
+    //この時は文字列に含まれる数を一つßの数として扱う。
     //argsが失敗した時のメモリの解放を忘れずに行う必要がある。
-    if(args == 2)
-        args = ft_split(av[1] , 2);
+    if(ac == 2)
+    {
+        args = ft_split(av[1] , ' ');
+        if(!args)
+            return;
+    }    
     else
         args = av;
+    //i=0はプログラム名なので除外
     i = 1;  
     while(args[i])
     {
         temp = ft_atoi(args[i]);
-        if(!ft_numcheck(args[i]) || ft_double_check(temp , args , i))
+        if(!ft_numcheck(args[i]) || !ft_double_check(temp , args , i))
             retrun (1);
         if (temp < INT_MIN || temp > INT_MAX)
             return(1);
         (*count)++;
-        ft_push_a(&stack_a , temp);
+        ft_push_a(stack_a , temp);
         if(stack_a == NULL)
             return (1);
         i++;
     }
+    //最後まで通ればエラー０
     return (0);
 }
