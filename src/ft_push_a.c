@@ -2,8 +2,9 @@
 
 void ft_push_a(t_stack **stack_a , int  num)
 {
-    t_node *newNode = malloc(sizeof(t_node));
+    t_node *newNode;
     
+    newNode = malloc(sizeof(t_node));
     if(newNode == NULL)
     {
         free_stack(stack_a);
