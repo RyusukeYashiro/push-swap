@@ -11,7 +11,7 @@ void ft_swap(t_node **s1 , t_node **s2)
     *s2 = temp;
 }
 
-void ft__sort(t_node **array_copy , int left , int right)
+void ft_sort(t_node **array_copy , int left , int right)
 {
     int pivot_index;
     int pivot;
@@ -43,13 +43,38 @@ void ft__sort(t_node **array_copy , int left , int right)
     ft_sort(array_copy , i , right);
 }
 
-void ft_binary_search(t_node **result , t_node **array_copy , int count)
+int ft_lower_bound(int num , t_node **array_copy , int count)
 {
+    int i;
 
+    i = 0;
+    while(i < count)
+    {
+        if(array_copy[i] >= num)
+            return (i);
+        i++;
+    }
+    return (-1);
 }
 
 
-void ft_compress(t_stack **a , t_node **array_copy , int count)
+void ft_binary_search(t_node **result , t_node **array_copy , int count)
+{
+    int i;
+    int positon;
+
+    i = 0;
+    while(i < count)
+    {
+        positon = ft_lower_bound(array_copy[i] -> value , array_copy , count);
+        if(positon == -1)
+            return;
+        result[i] -> index = positon;
+        i++;
+    }
+}
+
+t_node  **ft_compress(t_stack **a , t_node **array_copy , int count)
 {
     t_node **result;
     int left;
@@ -60,8 +85,6 @@ void ft_compress(t_stack **a , t_node **array_copy , int count)
     result = ft_pointer_buffer(a , count);
     ft_sort(array_copy , left , right);
     ft_binary_search(result, array_copy , count);
-
-
-
-
+    
+    return(result);
 }
