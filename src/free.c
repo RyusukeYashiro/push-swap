@@ -1,25 +1,25 @@
 #include "../include/push_swap.h"
 
+//ヒープ領域のアドレスを持つポインタ変数であるstack_aのアドレスを持つポインタ（ダブルポインタ）がstack
 void free_stack(t_stack **stack)
 {
     t_node *temp;
-    t_node *next;
     t_node *first;
-
-    //stackはここでは**stackのことを指す。
+    t_node *next;
+    //そもそもstack自体がないかstack構造体自体が存在しない場合
     if(stack == NULL || *stack == NULL)
         return;
+    //t_stack構造体の中のtopメンバにアクセス
     temp = (*stack) -> top;
-    //stackが1つの時の処理。つまりこの一つの要素を解放すれば良い。
-    //*stackはt_stack **stack がさす実際のスタック構造(スタック構造へのポインタ)を指す。
+    //もしstack構造体が一つだけなら
     if(temp -> next == temp)
     {
         free(temp);
+        //stackはスタック領域にあるポインタ変数のアドレスなので*stackでヒープ領域にあるものを指す
         free(*stack);
-        *stack = NULL;
+        *stack == NULL;
         return;
     }
-    //最初の位置を保持しておく関数
     first = temp;
     while(temp -> next != first)
     {
@@ -29,5 +29,4 @@ void free_stack(t_stack **stack)
     }
     free(temp);
     free(*stack);
-    *stack = NULL;
 }

@@ -52,6 +52,7 @@ t_node **ft_pointer_buffer(t_stack *src , int count)
         return NULL;
     temp = src -> top;
     first = src -> top;
+    i = 0;
     while(i < count)
     {
         buffer[i] = temp;
@@ -67,27 +68,19 @@ void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count)
 {
     t_node **array;
     t_node **array_copy;
-    int pivot;
-
     //t_stack_aをランダムアクセスできる配列へと変換する関数
     array = ft_pointer_buffer(a , count);
     array_copy = ft_pointer_buffer(a , count);
     //copy_a = init_stack();
     //deepCopy(a , &copy_a);
-    pivot = 0;
-    if(count <= 3)
+    if(count <= 6)
     {
-
-    }
-    else if(count <= 6)
-    {
-
+        ft_sort_min(a , b, array , count);
     }
     else if(count >= 7)
     {
-        ft_compress(a,array_copy, count);
-        pivot = ft_search_pivot(array_copy,count);
-        ft_quick_sort(a , b , hold , pivot);
+        array = ft_compress(a,array_copy, count);
+        ft_sort_long(array , a , b , hold);
     }
 
 }

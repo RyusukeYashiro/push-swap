@@ -13,6 +13,7 @@ bool ft_double_check(int temp , char **args , int i)
     }
     return (true);
 }
+//0-9まで数がどうか
 bool ft_numcheck(char *num) 
 {
     int i;
@@ -55,15 +56,15 @@ int parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
     {
         temp = ft_atoi(args[i]);
         if(!ft_numcheck(args[i]) || !ft_double_check(temp , args , i))
-            retrun (1);
+            return(free(args) , 1);
         if (temp < INT_MIN || temp > INT_MAX)
-            return(1);
+            return(free(args) , 1);
         (*count)++;
         ft_push_a(stack_a , temp);
-        if(stack_a == NULL)
-            return (1);
         i++;
     }
     //最後まで通ればエラー０
+    if (ac == 2)
+        free(args);
     return (0);
 }
