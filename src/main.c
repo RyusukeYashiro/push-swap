@@ -39,7 +39,7 @@ int main(int ac , char *av[])
         return (1);
     }
     //sortアルゴリズムを実装
-    ft_sort_stack(&stack_a , &stack_b , &command_result);
+    ft_sort_stack(&stack_a , &stack_b , &command_result , count);
     //sortしたコマンドを出力する
     print_command(command_result);
     free_stack(&stack_a);
