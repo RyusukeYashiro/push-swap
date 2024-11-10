@@ -23,7 +23,7 @@ void pa(t_stack **stack_a , t_stack **stack_b)
     node_elem -> pre = first_a -> pre;
     first_a -> pre -> next = node_elem;
     first_a -> pre = node_elem;
-    first_a = node_elem;
+    (*stack_a) -> top = node_elem;
     write(1 , "pa\n" , 3);
 }
 
@@ -38,7 +38,7 @@ void pb(t_stack **stack_a , t_stack **stack_b)
         return;
     node_elem = (*stack_a) -> top;
     first_b = (*stack_b) -> top;
-    if(node_elem -> next = node_elem)
+    if(node_elem -> next == node_elem)
         (*stack_a) -> top = NULL;
     else 
     {
@@ -50,6 +50,6 @@ void pb(t_stack **stack_a , t_stack **stack_b)
     node_elem -> pre = first_b -> pre;
     first_b -> pre -> next = node_elem;
     first_b -> pre = node_elem;
-    first_b = node_elem;
-    write(1 , "pb/n" , 3);
+    (*stack_b) -> top = node_elem;
+    write(1, "pb\n", 3);
 }

@@ -1,6 +1,6 @@
 #include "../../include/push_swap.h"
 
-void ra(t_stack **stack_a)
+void rra(t_stack **stack_a)
 {
     t_node *first_a;
 
@@ -9,12 +9,11 @@ void ra(t_stack **stack_a)
     first_a = (*stack_a) -> top;
     if(first_a -> next == first_a)
         return;
-    
-    (*stack_a) -> top = first_a -> next;
-    write(1 , "ra\n" , 3);
+    (*stack_a) -> top = first_a -> pre;
+    write(1 , "rra\n" , 4);
 }
 
-void rb(t_stack **stack_b)
+void rrb(t_stack **stack_b)
 {
     t_node *first_b;
 
@@ -23,14 +22,14 @@ void rb(t_stack **stack_b)
     first_b = (*stack_b) -> top;
     if(first_b -> next == first_b)
         return;
-    
-    (*stack_b) -> top = first_b -> next;
-    write(1 , "rb\n" , 3);
+    (*stack_b) -> top = first_b -> pre;
+    write(1 , "rrb\n" , 4);
 }
 
-void rr(t_stack **stack_a , t_stack **stack_b)
+void rrr(t_stack **stack_a , t_stack **stack_b)
 {
-    ra(stack_a);
-    rb(stack_b);
-    write(1, "rr\n", 3);
+    rra(stack_a);
+    rrb(stack_b);
+    write(1, "rrr\n", 4);
 }
+
