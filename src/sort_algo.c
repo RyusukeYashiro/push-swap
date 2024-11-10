@@ -66,6 +66,16 @@ t_node **ft_pointer_buffer(t_stack *src , int count)
 
 void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count)
 {
+    t_node **array;
+    t_node **array_copy;
+    if(count <= 3)
+        ft_sort_min(a , count);
+    else if (count <= 6)
+        sort_mid(a , b);
+    else 
+    {
+        
+    }
     // t_node **array;
     // t_node **array_copy;
     // //t_stack_aをランダムアクセスできる配列へと変換する関数
