@@ -71,10 +71,10 @@ void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count)
     if(count <= 3)
         ft_sort_min(a , count);
     else if (count <= 6)
-        sort_mid(a , b);
+        ft_sort_mid(a , b);
     else 
     {
-        
+
     }
     // t_node **array;
     // t_node **array_copy;
