@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:29 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:31 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/12 17:37:37 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int ft_parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
     {
         args = ft_split(av[1] , ' ');
         if(!args)
-            return;
+            return (1);
     }    
     else
         args = av;

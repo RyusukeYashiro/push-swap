@@ -6,11 +6,12 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:46 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:22:52 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/12 18:21:06 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+#include "../../include/libft.h"
 
 void ft_sort_three(t_stack **stack_a)
 {

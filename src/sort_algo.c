@@ -6,11 +6,12 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:56 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/12 18:21:59 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../include/libft.h"
 
 int ft_find_pivot(t_stack **stack , int size)
 {
@@ -70,12 +71,12 @@ void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len)
     }
 }
 
-void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count)
+void ft_sort_stack(t_stack **a , t_stack **b , t_stack **hold , int count)
 {
     if(count <= 3)
         ft_sort_min(a , count);
     else if (count <= 6)
-        ft_sort_mid(a , b);
+        ft_sort_mid(a , b , count);
     else 
         ft_quick_sort(a , b ,count);
 }

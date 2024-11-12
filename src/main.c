@@ -6,11 +6,12 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:40 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/12 18:21:14 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../include/libft.h"
 
 t_stack *ft_init_stack()
 {
@@ -33,18 +34,18 @@ int main(int ac , char *av[])
     int count;
 
     //stackの初期化
-    stack_a = init_stack();
-    stack_b = init_stack();
+    stack_a = ft_init_stack();
+    stack_b = ft_init_stack();
     if (stack_a == NULL || stack_b == NULL)
         return (1);
     //引数の長さを保持しておきたい
     count = 0;
     //errorフラグを立てておく。もし立ったら終了して忘れずfree関数に投げる
-    error_flag = ft_pase_check_and_push(ac , av ,&stack_a , &count);
+    error_flag = ft_parse_check_and_push(ac , av ,&stack_a , &count);
     
-    if (error_flag)
+    if (!error_flag)
     {
-        ft_putstr("Error\n" , 1);
+        ft_putstr_fd("Error" , 1);
         free_stack(&stack_a);
         free_stack(&stack_b);
         return (1);

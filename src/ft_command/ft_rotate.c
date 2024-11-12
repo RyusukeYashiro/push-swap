@@ -6,11 +6,12 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:21:38 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:21:44 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/12 18:20:53 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+#include "../../include/libft.h"
 
 void ra(t_stack **stack_a)
 {

@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:20:23 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/12 18:24:52 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stack
     int size;
 } t_stack;
 
+int	main(int argc, char **argv);
 void pa(t_stack **stack_a ,t_stack **stack_b);
 void pb(t_stack **stack_a , t_stack **stack_b);
 void sa(t_stack **stack_a);
@@ -46,7 +47,7 @@ void rrr(t_stack **stack_a , t_stack **stack_b);
 t_stack *ft_init_stack();
 int ft_find_pivot(t_stack **stack , int size);
 void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len);
-void sort_algo(t_stack **a , t_stack **b , t_stack **hold , int count);
+void ft_sort_stack(t_stack **a , t_stack **b , t_stack **hold , int count);
 void ft_sort_min(t_stack **stack_a ,int count);
 void ft_sort_three(t_stack **stack_a);
 void ft_rotation_sort(t_stack **stack_a , int min);
