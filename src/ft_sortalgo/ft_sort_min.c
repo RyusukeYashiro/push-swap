@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_min.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:22:46 by ryusukeyash       #+#    #+#             */
+/*   Updated: 2024/11/12 17:22:52 by ryusukeyash      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-
-ft_sort_three(t_stack **stack_a)
+void ft_sort_three(t_stack **stack_a)
 {
     int top;
     int middle;

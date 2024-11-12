@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pase_check_and_push.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:23:29 by ryusukeyash       #+#    #+#             */
+/*   Updated: 2024/11/12 17:23:31 by ryusukeyash      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 bool ft_double_check(int temp , char **args , int i)
@@ -31,7 +43,7 @@ bool ft_numcheck(char *num)
     return (true);
 }
 
-int parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
+int ft_parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
 {
     //コマンドラインの文字列を処理する関数
     char **args;

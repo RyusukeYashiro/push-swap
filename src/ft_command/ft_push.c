@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:21:01 by ryusukeyash       #+#    #+#             */
+/*   Updated: 2024/11/12 17:21:12 by ryusukeyash      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
 void pa(t_stack **stack_a , t_stack **stack_b)
@@ -24,7 +36,7 @@ void pa(t_stack **stack_a , t_stack **stack_b)
     first_a -> pre -> next = node_elem;
     first_a -> pre = node_elem;
     (*stack_a) -> top = node_elem;
-    write(1 , "pa\n" , 3);
+    ft_putendl_fd("pa" , 1);
 }
 
 void pb(t_stack **stack_a , t_stack **stack_b)
@@ -32,7 +44,7 @@ void pb(t_stack **stack_a , t_stack **stack_b)
     t_node *node_elem;
     t_node *first_b;
 
-     if(!stack_b || !(*stack_b) || !(*stack_b) -> top)
+    if(!stack_b || !(*stack_b) || !(*stack_b) -> top)
         return;
     if(!stack_a || !(*stack_a) || !(*stack_a) -> top)
         return;
@@ -51,5 +63,5 @@ void pb(t_stack **stack_a , t_stack **stack_b)
     first_b -> pre -> next = node_elem;
     first_b -> pre = node_elem;
     (*stack_b) -> top = node_elem;
-    write(1, "pb\n", 3);
+    ft_putendl_fd("pb" , 1);
 }

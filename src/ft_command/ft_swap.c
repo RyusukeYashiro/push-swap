@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:22:03 by ryusukeyash       #+#    #+#             */
+/*   Updated: 2024/11/12 17:22:12 by ryusukeyash      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
 void sa(t_stack **stack_a)
@@ -19,7 +31,7 @@ void sa(t_stack **stack_a)
     first -> next -> pre = first;
     (*stack_a) -> top = second;
 
-    write(1 , "sa\n" , 3);
+    ft_putendl_fd("sa" , 1);
 }
 
 void sb(t_stack **stack_b)
@@ -41,7 +53,7 @@ void sb(t_stack **stack_b)
     first -> next -> pre = first;
     (*stack_b) -> top = second;
 
-    write(1 , "sb/n" , 3);
+    ft_putendl_fd("sb" , 1);
 }
 
 void ss(t_stack **stack_a , t_stack **stack_b)
@@ -52,5 +64,5 @@ void ss(t_stack **stack_a , t_stack **stack_b)
         return;
     sa(stack_a);
     sb(stack_b);
-    write(1 , "ss\n" , 3);
+    ft_putendl_fd("ss" , 1);
 }

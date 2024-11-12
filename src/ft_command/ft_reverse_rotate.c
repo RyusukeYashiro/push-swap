@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:21:25 by ryusukeyash       #+#    #+#             */
+/*   Updated: 2024/11/12 17:21:30 by ryusukeyash      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
 void rra(t_stack **stack_a)
@@ -10,7 +22,7 @@ void rra(t_stack **stack_a)
     if(first_a -> next == first_a)
         return;
     (*stack_a) -> top = first_a -> pre;
-    write(1 , "rra\n" , 4);
+    ft_putendl_fd("rra" , 1);
 }
 
 void rrb(t_stack **stack_b)
@@ -23,13 +35,13 @@ void rrb(t_stack **stack_b)
     if(first_b -> next == first_b)
         return;
     (*stack_b) -> top = first_b -> pre;
-    write(1 , "rrb\n" , 4);
+    ft_putendl_fd("rrb" , 1);
 }
 
 void rrr(t_stack **stack_a , t_stack **stack_b)
 {
     rra(stack_a);
     rrb(stack_b);
-    write(1, "rrr\n", 4);
+    ft_putendl_fd("rrr" , 1);
 }
 
