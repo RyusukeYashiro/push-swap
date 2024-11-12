@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_mid.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 17:22:33 by ryusukeyash       #+#    #+#             */
+/*   Updated: 2024/11/12 17:22:40 by ryusukeyash      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/push_swap.h"
 
 void ft_rotation_sort(t_stack **stack_a , int min)
@@ -24,7 +36,33 @@ void ft_rotation_sort(t_stack **stack_a , int min)
     }
 }
 
-ft_insert_sort(t_stack **stack_a , t_stack **stack_b , int num , int count)
+void ft_sort_check(int pos, int pos_len , t_stack **stack_a , t_stack **stack_b)
+{
+    // 最初と最後だったらローテンションさせない
+    if(pos == 0 || pos == pos_len)
+        pa(stack_a , stack_b);
+    else if (pos_len / 2 > pos)
+    {
+        //ありうる位置の場所の半分割より小さい区間の場合は前へ移動
+        while(pos > 0)
+        {
+            ra(stack_a);
+            pos--;
+        }
+        pa(stack_a , stack_b);
+    }
+    else if (pos_len / 2 <= pos)
+    {
+        while(pos_len - pos > 0)
+        {
+            rra(stack_a);
+            pos++;
+        }
+        pa(stack_a , stack_b);
+    }
+}
+
+void ft_insert_sort(t_stack **stack_a , t_stack **stack_b , int num , int count)
 {
     t_node *temp;
     //挿入するのはpos+1の箇所
@@ -48,28 +86,7 @@ ft_insert_sort(t_stack **stack_a , t_stack **stack_b , int num , int count)
         pos++;
         temp = temp -> next;
     }
-    //最初と最後だったらローテンションさせない
-    if(pos == 0 || pos == pos_len)
-        pa(stack_a , stack_b);
-    else if (pos_len / 2 > pos)
-    {
-        //ありうる位置の場所の半分割より小さい区間の場合は前へ移動
-        while(pos > 0)
-        {
-            ra(stack_a);
-            pos--;
-        }
-        pa(stack_a , stack_b);
-    }
-    else if (pos_len / 2 <= pos)
-    {
-        while(pos_len - pos > 0)
-        {
-            rra(stack_a);
-            pos++;
-        }
-        pa(stack_a , stack_b);
-    }
+    ft_sort_check(pos , pos_len , stack_a , stack_b);
     ft_rotation_sort(stack_a , min);
 }
 
