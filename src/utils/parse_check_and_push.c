@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pase_check_and_push.c                              :+:      :+:    :+:   */
+/*   parse_check_and_push.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:29 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:37:37 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/17 01:08:13 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../../include/libft.h"
 
-bool ft_double_check(int temp , char **args , int i)
+bool ft_double_check(int temp , char **args , int current_i)
 {
-    int num;
-    
-    num = ft_atoi(args[i++]);
-    while(args[i])
+    int i;
+
+    if(args[0] == NULL)
+        i = 0;
+    else 
+        i = 1;
+    while(i < current_i)
     {
         if(ft_atoi(args[i]) == temp)
             return(false);
@@ -68,15 +72,15 @@ int ft_parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count)
     {
         temp = ft_atoi(args[i]);
         if(!ft_numcheck(args[i]) || !ft_double_check(temp , args , i))
-            return(free(args) , 1);
+            return(1);
         if (temp < INT_MIN || temp > INT_MAX)
-            return(free(args) , 1);
+            return(1);
         (*count)++;
         ft_push_a(stack_a , temp);
         i++;
     }
     //最後まで通ればエラー０
-    if (ac == 2)
-        free(args);
+    // if (ac == 2)
+    //     free(args);
     return (0);
 }
