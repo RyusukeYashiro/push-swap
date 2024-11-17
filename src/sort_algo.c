@@ -6,13 +6,13 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 18:21:59 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/17 11:12:41 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../include/libft.h"
-
+#include <stdio.h>
 int ft_find_pivot(t_stack **stack , int size)
 {
     t_node *temp;
@@ -48,6 +48,8 @@ void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len)
     int i;
     int pb_size;
 
+    if(len <= 1)
+        return;
     pivot = ft_find_pivot(stack_a , len);
     i = 0;
     pb_size = 0;
@@ -71,12 +73,19 @@ void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len)
     }
 }
 
-void ft_sort_stack(t_stack **a , t_stack **b , t_stack **hold , int count)
+void ft_sort_stack(t_stack **a , t_stack **b , int count)
 {
+    printf("count : %d" , count);
     if(count <= 3)
+    {
         ft_sort_min(a , count);
-    else if (count <= 6)
+        printf("in min");
+    }
+    else if (4 <= count && count <= 6)
+    {
         ft_sort_mid(a , b , count);
+        printf("in mid");
+    }
     else 
         ft_quick_sort(a , b ,count);
 }

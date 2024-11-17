@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:33 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 18:21:02 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/17 01:14:58 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_rotation_sort(t_stack **stack_a , int min)
         pos++;
         temp = temp -> next;
     }
-    if (pos <= count_stack_len(stack_a) / 2)
+    if (pos <= count_stack_len_a(stack_a) / 2)
     {
         while ((*stack_a)->top->value != min)
             ra(stack_a);
@@ -63,7 +63,7 @@ void ft_sort_check(int pos, int pos_len , t_stack **stack_a , t_stack **stack_b)
     }
 }
 
-void ft_insert_sort(t_stack **stack_a , t_stack **stack_b , int num , int count)
+void ft_insert_sort(t_stack **stack_a , t_stack **stack_b , int num)
 {
     t_node *temp;
     //挿入するのはpos+1の箇所
@@ -74,7 +74,7 @@ void ft_insert_sort(t_stack **stack_a , t_stack **stack_b , int num , int count)
     temp = (*stack_a) -> top;
     min = stack_a_min(stack_a);
     pos = 0;
-    pos_len = count_stack_len(stack_a);
+    pos_len = count_stack_len_a(stack_a);
     //一旦ここで挿入すべき箇所を見つける
     while(temp -> next != (*stack_a) -> top)
     {
@@ -110,9 +110,9 @@ void ft_sort_mid(t_stack **a  , t_stack **b , int count)
     }
     ft_sort_three(a);
     //bをひたすら前から貪欲に挿入していく
-    while(*b)
+    while(*b && (*b) -> top)
     {
         insert_value = (*b) -> top -> value;
-        ft_insert_sort(a , b , insert_value , count);    
+        ft_insert_sort(a , b , insert_value);    
     }
 }

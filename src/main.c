@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 18:21:14 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/17 10:51:30 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(int ac , char *av[])
     //ポインタ変数として宣言
     t_stack *stack_a;
     t_stack *stack_b;
-    t_stack *command_result;
     int error_flag;
     int count;
 
@@ -37,22 +36,20 @@ int main(int ac , char *av[])
     stack_a = ft_init_stack();
     stack_b = ft_init_stack();
     if (stack_a == NULL || stack_b == NULL)
-        return (1);
+        return (0);
     //引数の長さを保持しておきたい
     count = 0;
     //errorフラグを立てておく。もし立ったら終了して忘れずfree関数に投げる
     error_flag = ft_parse_check_and_push(ac , av ,&stack_a , &count);
     
-    if (!error_flag)
+    if (error_flag == 1)
     {
         ft_putstr_fd("Error" , 1);
         free_stack(&stack_a);
         free_stack(&stack_b);
-        return (1);
+        return (0);
     }
     //sortアルゴリズムを実装
-    ft_sort_stack(&stack_a , &stack_b , &command_result , count);
-    free_stack(&stack_a);
-    free_stack(&stack_b);
+    ft_sort_stack(&stack_a , &stack_b , count);
     return (0);
 }

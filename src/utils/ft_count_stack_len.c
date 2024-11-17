@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:08 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:10 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/16 15:13:14 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int count_stack_len_a(t_stack **stack_a)
     return (len);
 }
 
-int count_stack_len_a(t_stack **stack_b)
+int count_stack_len_b(t_stack **stack_b)
 {
     t_node *temp;
     int len;
