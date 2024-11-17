@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:46 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 18:21:06 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/17 00:53:11 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,12 @@ void ft_sort_three(t_stack **stack_a)
 
 void ft_sort_min(t_stack **stack_a ,int count)
 {
+    if (!stack_a || !*stack_a || !(*stack_a)->top)
+        return;
     if(count < 3)
     {
+        if (!(*stack_a)->top->next)
+            return;
         if((*stack_a) -> top -> value < (*stack_a) -> top -> next -> value)
             return;
         else
