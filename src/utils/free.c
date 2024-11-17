@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:58 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:03 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/16 16:18:52 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void free_stack(t_stack **stack)
     t_node *first;
     t_node *next;
     //そもそもstack自体がないかstack構造体自体が存在しない場合
-    if(stack == NULL || *stack == NULL)
+    if(stack == NULL || *stack == NULL || (*stack)->top == NULL)
         return;
     //t_stack構造体の中のtopメンバにアクセス
     temp = (*stack) -> top;
@@ -29,7 +29,7 @@ void free_stack(t_stack **stack)
         free(temp);
         //stackはスタック領域にあるポインタ変数のアドレスなので*stackでヒープ領域にあるものを指す
         free(*stack);
-        *stack == NULL;
+        *stack = NULL;
         return;
     }
     first = temp;
@@ -41,4 +41,5 @@ void free_stack(t_stack **stack)
     }
     free(temp);
     free(*stack);
+    *stack = NULL;
 }
