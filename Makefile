@@ -14,6 +14,7 @@ SRCS = src/main.c \
 		src/utils/ft_count_stack_len.c \
 		src/utils/ft_push_a.c \
 		src/utils/ft_stack_min.c \
+		src/utils/ft_stack_max.c \
 		src/utils/parse_check_and_push.c \
 
 OBJS    = $(SRCS:.c=.o)
