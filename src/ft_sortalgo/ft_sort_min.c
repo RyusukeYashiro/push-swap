@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:46 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/17 00:53:11 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/23 20:10:38 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ void ft_sort_three(t_stack **stack_a)
 
     if (top < middle && middle < bottom)
         return;
-    //i 3 2
-    else if(top < middle && middle > bottom)
-    {
-        sa(stack_a);
-        ra(stack_a);
-    }
     //2 1 3
     else if(top > middle && top < bottom)
         sa(stack_a);
@@ -47,6 +41,12 @@ void ft_sort_three(t_stack **stack_a)
     {   
         sa(stack_a);
         rra(stack_a);
+    }
+    //1 3 2
+    else if(top < middle && bottom > top)
+    {
+        sa(stack_a);
+        ra(stack_a);
     }
 }
 
