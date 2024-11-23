@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:24 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/12 17:23:25 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/23 18:31:37 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,19 @@
 int stack_a_min(t_stack **stack_a)
 {
     t_node *temp;
+    t_node *first;
     int min;
 
     if (!stack_a || !*stack_a || !(*stack_a)->top)
         return (0);
-
     temp = (*stack_a)->top;
+    first = temp;
     min = temp->value;
-
-    // 循環リストを最後まで探索
-    while (temp->next != (*stack_a)->top)
+    temp = temp -> next;
+    while (temp != first)
     {
-        if (temp->next->value < min)
-            min = temp->next->value;
-        temp = temp->next;
-    }
-    return (min);
-}
-
-int stack_b_min(t_stack **stack_b)
-{
-    t_node *temp;
-    int min;
-
-    if (!stack_b || !*stack_b || !(*stack_b)->top)
-        return (0);
-
-    temp = (*stack_b)->top;
-    min = temp->value;
-
-    // 循環リストを最後まで探索
-    while (temp->next != (*stack_b)->top)
-    {
-        if (temp->next->value < min)
-            min = temp->next->value;
+        if (temp -> value < min)
+            min = temp ->value;
         temp = temp->next;
     }
     return (min);
