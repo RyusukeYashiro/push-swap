@@ -6,12 +6,13 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/17 10:51:30 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/23 16:49:41 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../include/libft.h"
+#include "stdio.h"
 
 t_stack *ft_init_stack()
 {
@@ -22,6 +23,23 @@ t_stack *ft_init_stack()
     // 番兵ノードの先頭になる
     new_stack -> top = NULL;
     return (new_stack);
+}
+
+void print_stack(t_stack **stack_a)
+{
+    t_node *temp;
+    t_node *first;
+
+    temp = (*stack_a) ->top;
+    first = temp;
+    printf("%d " , temp -> value);
+    temp = temp -> next;
+    while(temp != first)
+    {
+        printf("%d " , temp -> value);
+        temp = temp -> next;
+    }
+    printf("\n");
 }
 
 int main(int ac , char *av[])
@@ -51,5 +69,6 @@ int main(int ac , char *av[])
     }
     //sortアルゴリズムを実装
     ft_sort_stack(&stack_a , &stack_b , count);
+    print_stack(&stack_a);
     return (0);
 }
