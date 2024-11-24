@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/23 20:28:05 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/24 14:22:01 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int stack_a_max(t_stack **stack_a);
 bool ft_double_check(int temp , char **args , int current_i);
 bool ft_numcheck(char *num);
 int ft_parse_check_and_push(int ac , char **av, t_stack **stack_a , int *count);
-void print_stack(t_stack **stack_a);
+void print_stack_a(t_stack **stack_a);
+void print_stack_b(t_stack **stack_b);
 
 #endif
