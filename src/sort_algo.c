@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/17 11:12:41 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/11/24 15:49:10 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,30 @@
 int ft_find_pivot(t_stack **stack , int size)
 {
     t_node *temp;
+    t_node *hold;
     int i;
     int count;
-    int middle_num;
 
     temp = (*stack) -> top;
-    middle_num = temp -> value;
     i = 0;
     while(i < size)
     {
         count = 0;
-        temp = (*stack) -> top;
-        while(temp -> next != (*stack) -> top)
+        hold = (*stack) -> top;
+        while(1)
         {
-            if(temp -> value < middle_num)
+            if(hold -> value < temp -> value)
                 count++;
-            temp = temp -> next;
+            hold = hold -> next;
+            if(hold == (*stack) -> top)
+                break;
         }
         if(count == size / 2)
-            return middle_num;
+            return temp ->value;
         temp = temp -> next;
-        middle_num = temp -> value;
         i++;
     }
-    return middle_num;
+    return temp -> value;
 }
 
 void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len)
@@ -48,9 +48,13 @@ void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len)
     int i;
     int pb_size;
 
-    if(len <= 1)
+    if(len <= 3)
+    {
+        ft_sort_min(stack_a , len);
         return;
+    }
     pivot = ft_find_pivot(stack_a , len);
+    printf("これがpivotとlenです : %d , %d\n" , pivot , len);
     i = 0;
     pb_size = 0;
     while(i < len)
@@ -63,12 +67,14 @@ void ft_quick_sort(t_stack **stack_a , t_stack **stack_b , int len)
             ra(stack_a);
         i++;
     }
+    printf("これは再起に入る前の処理です\n");
+    print_stack_a(stack_a);
+    print_stack_b(stack_b);
     ft_quick_sort(stack_b , stack_a , pb_size);
     ft_quick_sort(stack_a , stack_b , len - pb_size);
-
     while(pb_size--)
     {
-        rra(stack_b);
+        // rra(stack_b);
         pa(stack_a , stack_b);
     }
 }
