@@ -177,7 +177,7 @@ void ft_sort_mid(t_stack **a  , t_stack **b , int count)
         pb(a , b);
         pb(a , b);
     }
-    ft_sort_three(a);
+    ft_sort_three_a(a);
     //bをひたすら前から貪欲に挿入していく
     while(*b && (*b) -> top)
     {
