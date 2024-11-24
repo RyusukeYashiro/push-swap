@@ -32,9 +32,11 @@ LIBFT_PATH = ./Libft
 
 LIBFT_NAME = libft.a
 
+
 $(NAME):$(OBJS)
 	make -C $(LIBFT_PATH) all
-	ar -rcs $(NAME) $(OBJS) 
+	ar -rcs $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) src/main.c $(NAME) $(LIBFT_PATH)/$(LIBFT_NAME) -o push_swap
 
 clean:
 	rm -f $(OBJS)
@@ -42,6 +44,7 @@ clean:
 
 fclean: clean 
 		rm -f $(NAME)
+		rm -f push_swap
 		rm -f $(LIBFT_PATH)/$(LIBFT_NAME)
 		
 re:  fclean all
