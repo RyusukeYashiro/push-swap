@@ -6,116 +6,82 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/24 15:49:10 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/01 19:22:51 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 #include "../include/libft.h"
 #include <stdio.h>
-int ft_find_pivot(t_stack **stack , int size)
+
+int ft_digit(int num)
+{
+    int result;
+
+    result = 0;
+    num -= 1;
+    while((num >> result) != 0)
+        result++;
+    return(result);
+}
+
+int ft_find_index(t_stack **stack, int *array , int len)
 {
     t_node *temp;
-    t_node *hold;
+    t_node *elem;
     int i;
-    int count;
+    int result;
 
     temp = (*stack) -> top;
     i = 0;
-    while(i < size)
+    while(i < len)
     {
-        count = 0;
-        hold = (*stack) -> top;
-        while(1)
+        result = 0;
+        elem = (*stack) -> top;
+        while (1)
         {
-            if(hold -> value < temp -> value)
-                count++;
-            hold = hold -> next;
-            if(hold == (*stack) -> top)
+            if(temp -> value > elem -> value)
+                result++;
+            elem = elem -> next;        
+            if(elem == (*stack) -> top)
                 break;
         }
-        if(count == size / 2)
-            return temp ->value;
+        array[i] = result;
         temp = temp -> next;
-        i++;
+        i++;        
     }
-    return temp -> value;
+    return(ft_digit(len));
 }
 
-void ft_quick_sort_a(t_stack **stack_a , t_stack **stack_b , int len)
+void ft_radix_sort(t_stack **a , t_stack **b , int len)
 {
-    int pivot;
-    int i;
-    int pb_size;
-
-    if(len <= 3)
-    {
-        ft_sort_min_a(stack_a , len);
-        return;
-    }
-    pivot = ft_find_pivot(stack_a , len);
-    printf("これがpivotとlenです : %d , %d\n" , pivot , len);
-    i = 0;
-    pb_size = 0;
-    while(i < len)
-    {
-        if((*stack_a) -> top -> value < pivot)
-        {
-            pb(stack_a , stack_b);
-            pb_size++;
-        } else
-            ra(stack_a);
-        i++;
-    }
+    int mx_bit_size;
+    int  *array;
+    int bit;
+    int j;
     
-    printf("これは再起に入る前の処理です\n");
-    print_stack_a(stack_a);
-    print_stack_b(stack_b);
-    ft_quick_sort_a(stack_a , stack_b , len - pb_size);
-    ft_quick_sort_b(stack_b , stack_a , pb_size);
-    while(pb_size--)
-    {
-        // rra(stack_b);
-        pa(stack_a , stack_b);
-    }
-}
-
-
-
-void ft_quick_sort_b(t_stack **stack_b , t_stack **stack_a , int len)
-{
-    int pivot;
-    int pa_size;
-    int i;
-
-    if(len <= 3)
-    {
-        ft_sort_min_b(stack_b , len);
+    array = (int *)malloc(sizeof(int) * len);
+    if(!array)
         return;
-    }
-    pa_size = 0;
-    pivot = ft_find_pivot(stack_b , len);
-    i = 0;
-    while(i < len)
+    mx_bit_size = ft_find_index(a , array , len);
+    bit = 0;
+    while(bit < mx_bit_size)
     {
-        if((*stack_b)->top ->value <= pivot)
+        j = 0;
+        while(j < len)
         {
-            pa(stack_a ,stack_b);
-            pa_size++;
+            if(((array[j] >> bit) & 1) == 0)
+                pb(a , b);
+            else 
+                ra(a);
+            j++;
         }
-        else
-            rb(stack_b);
-        i++;
+        while((*b) -> top)
+            pa(a , b);       
+        ft_find_index(a, array, len);
+        bit++;
     }
-    
-    printf("これは再起に入る前の処理です\n");
-    print_stack_a(stack_a);
-    print_stack_b(stack_b);
-    ft_quick_sort_a(stack_a , stack_b , pa_size);
-    ft_quick_sort_b(stack_b , stack_a , len - pa_size);
-
-    while (pa_size--)
-        pb(stack_b, stack_a);
+    free(array);
 }
 
 void ft_sort_stack(t_stack **a , t_stack **b , int count)
@@ -131,6 +97,6 @@ void ft_sort_stack(t_stack **a , t_stack **b , int count)
         ft_sort_mid(a , b , count);
         printf("in mid");
     }
-    else 
-        ft_quick_sort_a(a , b ,count);
+    else
+        ft_radix_sort(a , b ,count);
 }

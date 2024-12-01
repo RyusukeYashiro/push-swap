@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/24 14:22:01 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/01 19:17:11 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void rrr(t_stack **stack_a , t_stack **stack_b);
 
 t_stack *ft_init_stack();
 void ft_sort_stack(t_stack **a , t_stack **b , int count);
-int ft_find_pivot(t_stack **stack , int size);
-void ft_quick_sort_a(t_stack **stack_a , t_stack **stack_b , int len);
-void ft_quick_sort_b(t_stack **stack_b , t_stack **stack_a , int len);
+int ft_find_index(t_stack **stack, int *array , int len);
+int ft_digit(int num);
+void ft_radix_sort(t_stack **a , t_stack **b , int len);
 void ft_sort_min_b(t_stack **stack_b, int count);
 void ft_sort_min_a(t_stack **stack_a, int count);
 void ft_sort_three_a(t_stack **stack_a);
