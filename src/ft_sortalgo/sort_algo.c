@@ -6,12 +6,12 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/01 19:22:51 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/01 20:21:40 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../include/libft.h"
+#include "../../include/push_swap.h"
+#include "../../include/libft.h"
 #include <stdio.h>
 
 int ft_digit(int num)
@@ -99,4 +99,5 @@ void ft_sort_stack(t_stack **a , t_stack **b , int count)
     }
     else
         ft_radix_sort(a , b ,count);
+    print_stack_a(a);
 }

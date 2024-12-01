@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/11/24 14:28:50 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/01 20:26:46 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int main(int ac , char *av[])
     //ポインタ変数として宣言
     t_stack *stack_a;
     t_stack *stack_b;
+    bool sorted_flag;
     int error_flag;
     int count;
 
@@ -78,7 +79,6 @@ int main(int ac , char *av[])
     count = 0;
     //errorフラグを立てておく。もし立ったら終了して忘れずfree関数に投げる
     error_flag = ft_parse_check_and_push(ac , av ,&stack_a , &count);
-    
     if (error_flag == 1)
     {
         ft_putstr_fd("Error" , 1);
@@ -86,8 +86,15 @@ int main(int ac , char *av[])
         free_stack(&stack_b);
         return (0);
     }
+    sorted_flag = ft_isSorted(stack_a);
+    if(sorted_flag)
+    {
+        free_stack(&stack_a);
+        return (0);
+    }
     //sortアルゴリズムを実装
     ft_sort_stack(&stack_a , &stack_b , count);
-    print_stack_a(&stack_a);
+    free_stack(&stack_a);
+    free_stack(&stack_b);
     return (0);
 }
