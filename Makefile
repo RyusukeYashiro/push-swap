@@ -3,19 +3,21 @@ NAME = pushSwap.a
 CC = cc
 
 SRCS = src/main.c \
-		src/sort_algo.c \
+		src/ft_sortalgo/ft_sort_mid.c \
+		src/ft_sortalgo/ft_sort_min.c \
+		src/ft_sortalgo/sort_algo.c \
+		src/ft_sortalgo/ft_sort_mid_sub.c \
 		src/ft_command/ft_push.c \
 		src/ft_command/ft_reverse_rotate.c \
 		src/ft_command/ft_swap.c \
 		src/ft_command/ft_rotate.c \
-		src/ft_sortalgo/ft_sort_mid.c \
-		src/ft_sortalgo/ft_sort_min.c \
 		src/utils/free.c \
 		src/utils/ft_count_stack_len.c \
 		src/utils/ft_push_a.c \
 		src/utils/ft_stack_min.c \
 		src/utils/ft_stack_max.c \
 		src/utils/parse_check_and_push.c \
+		src/utils/ft_sort_check.c \
 
 OBJS    = $(SRCS:.c=.o)
 

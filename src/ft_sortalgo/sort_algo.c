@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/01 20:21:40 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 18:32:23 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,16 @@ int	ft_find_index(t_stack **stack, int *array, int len)
 	return (ft_digit(len));
 }
 
-void	ft_radix_sort(t_stack **a, t_stack **b, int len)
+void	ft_radix_sort(t_stack **a, t_stack **b, int len, int bit)
 {
 	int	mx_bit_size;
 	int	*array;
-	int	bit;
 	int	j;
 
 	array = (int *)malloc(sizeof(int) * len);
 	if (!array)
 		return ;
 	mx_bit_size = ft_find_index(a, array, len);
-	bit = 0;
 	while (bit < mx_bit_size)
 	{
 		j = 0;
@@ -86,6 +84,9 @@ void	ft_radix_sort(t_stack **a, t_stack **b, int len)
 
 void	ft_sort_stack(t_stack **a, t_stack **b, int count)
 {
+	int	bit;
+
+	bit = 0;
 	printf("count : %d", count);
 	if (count <= 3)
 	{
@@ -98,6 +99,6 @@ void	ft_sort_stack(t_stack **a, t_stack **b, int count)
 		printf("in mid");
 	}
 	else
-		ft_radix_sort(a, b, count);
+		ft_radix_sort(a, b, count, bit);
 	print_stack_a(a);
 }

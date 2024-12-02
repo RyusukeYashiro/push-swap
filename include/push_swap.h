@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/02 12:59:36 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:03:43 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,19 @@ t_stack				*ft_init_stack(void);
 void				ft_sort_stack(t_stack **a, t_stack **b, int count);
 int					ft_find_index(t_stack **stack, int *array, int len);
 int					ft_digit(int num);
-void				ft_radix_sort(t_stack **a, t_stack **b, int len);
+void				ft_radix_sort(t_stack **a, t_stack **b, int len, int bit);
 void				ft_sort_min_a(t_stack **stack_a, int count);
 void				ft_sort_three_a(t_stack **stack_a);
 void				ft_check(int tp, int md, int bm, t_stack **a);
-void				ft_rotation_sort(t_stack **stack_a);
+void				ft_rotation_sort(t_stack **stack_a, int pos);
 void				ft_sort_check(int pos, int pos_len, t_stack **stack_a,
 						t_stack **stack_b);
 void				ft_insert_sort(t_stack **stack_a, t_stack **stack_b,
 						int num);
 void				ft_sort_mid(t_stack **a, t_stack **b, int count);
-
+int					ft_find_pos_min(t_node *temp, t_stack **a, int min);
+int					ft_find_pos_max(t_node *temp, t_stack **a, int max);
+int					ft_find_pos_bt(t_node *temp, t_stack **a, int num);
 void				free_stack(t_stack **stack);
 int					count_stack_len_a(t_stack **stack_a);
 int					count_stack_len_b(t_stack **stack_b);

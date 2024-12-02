@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:46 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/02 02:24:58 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 18:06:54 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,22 @@ void	ft_check(int tp, int md, int bm, t_stack **a)
 		return ;
 	else if (tp > md && tp < bm)
 		sa(a);
-	// 2 3 1
 	else if (tp < md && tp > bm)
 		rra(a);
-	// 3 1 2
 	else if (tp > md && bm > md)
 		ra(a);
-	// 3 2 1
 	else if (tp > md && md > bm)
 	{
 		sa(a);
 		rra(a);
 	}
-	// 1 3 2
 	else if (tp < md && bm > tp)
 	{
 		sa(a);
 		ra(a);
 	}
 }
+
 void	ft_sort_three_a(t_stack **stack_a)
 {
 	int		tp;
@@ -49,7 +46,7 @@ void	ft_sort_three_a(t_stack **stack_a)
 	tp = first_a->value;
 	md = first_a->next->value;
 	bm = first_a->next->next->value;
-    ft_check(tp, md, bm, stack_a);
+	ft_check(tp, md, bm, stack_a);
 }
 
 void	ft_sort_min_a(t_stack **stack_a, int count)
