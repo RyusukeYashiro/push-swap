@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/01 20:26:46 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 13:00:16 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,36 +63,26 @@ void print_stack_b(t_stack **stack_b)
 
 int main(int ac , char *av[])
 {
-    //ポインタ変数として宣言
     t_stack *stack_a;
     t_stack *stack_b;
     bool sorted_flag;
     int error_flag;
     int count;
-
-    //stackの初期化
+    
     stack_a = ft_init_stack();
     stack_b = ft_init_stack();
     if (stack_a == NULL || stack_b == NULL)
         return (0);
-    //引数の長さを保持しておきたい
     count = 0;
-    //errorフラグを立てておく。もし立ったら終了して忘れずfree関数に投げる
     error_flag = ft_parse_check_and_push(ac , av ,&stack_a , &count);
     if (error_flag == 1)
     {
-        ft_putstr_fd("Error" , 1);
-        free_stack(&stack_a);
-        free_stack(&stack_b);
-        return (0);
+        ft_putstr_fd("Error", 1);
+        return (free_stack(&stack_a), free_stack(&stack_b), 0);
     }
-    sorted_flag = ft_isSorted(stack_a);
+    sorted_flag = ft_issorted(stack_a);
     if(sorted_flag)
-    {
-        free_stack(&stack_a);
-        return (0);
-    }
-    //sortアルゴリズムを実装
+        return(free_stack(&stack_a) , 0);
     ft_sort_stack(&stack_a , &stack_b , count);
     free_stack(&stack_a);
     free_stack(&stack_b);

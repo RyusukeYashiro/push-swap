@@ -6,118 +6,65 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:46 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/01 02:21:23 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 02:24:58 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
 #include "../../include/libft.h"
+#include "../../include/push_swap.h"
 
-void ft_sort_three_a(t_stack **stack_a)
+void	ft_check(int tp, int md, int bm, t_stack **a)
 {
-    int top;
-    int middle;
-    int bottom;
-    t_node *first_a;
-    
-    first_a = (*stack_a) -> top;
-    top = first_a -> value;
-    middle = first_a -> next -> value;
-    bottom = first_a -> next -> next -> value;
+	if (tp < md && md < bm)
+		return ;
+	else if (tp > md && tp < bm)
+		sa(a);
+	// 2 3 1
+	else if (tp < md && tp > bm)
+		rra(a);
+	// 3 1 2
+	else if (tp > md && bm > md)
+		ra(a);
+	// 3 2 1
+	else if (tp > md && md > bm)
+	{
+		sa(a);
+		rra(a);
+	}
+	// 1 3 2
+	else if (tp < md && bm > tp)
+	{
+		sa(a);
+		ra(a);
+	}
+}
+void	ft_sort_three_a(t_stack **stack_a)
+{
+	int		tp;
+	int		md;
+	int		bm;
+	t_node	*first_a;
 
-    if (top < middle && middle < bottom)
-        return;
-    //2 1 3
-    else if(top > middle && top < bottom)
-        sa(stack_a);
-    //2 3 1
-    else if(top < middle && top > bottom)
-        rra(stack_a);
-    // 3 1 2
-    else if(top > middle && bottom > middle)
-        ra(stack_a);
-    //3 2 1
-    else if(top > middle && middle > bottom)
-    {   
-        sa(stack_a);
-        rra(stack_a);
-    }
-    //1 3 2
-    else if(top < middle && bottom > top)
-    {
-        sa(stack_a);
-        ra(stack_a);
-    }
+	first_a = (*stack_a)->top;
+	tp = first_a->value;
+	md = first_a->next->value;
+	bm = first_a->next->next->value;
+    ft_check(tp, md, bm, stack_a);
 }
 
-void ft_sort_three_b(t_stack **stack_b)
+void	ft_sort_min_a(t_stack **stack_a, int count)
 {
-    int top;
-    int middle;
-    int bottom;
-    t_node *first_b;
-    
-    first_b = (*stack_b) -> top;
-    top = first_b -> value;
-    middle = first_b -> next -> value;
-    bottom = first_b -> next -> next -> value;
-
-    if (top < middle && middle < bottom)
-        return;
-    //2 1 3
-    else if(top > middle && top < bottom)
-        sb(stack_b);
-    //2 3 1
-    else if(top < middle && top > bottom)
-        rrb(stack_b);
-    // 3 1 2
-    else if(top > middle && top > bottom)
-        rb(stack_b);
-    //3 2 1
-    else if(top > middle && middle > bottom)
-    {   
-        sb(stack_b);
-        rrb(stack_b);
-    }
-    //1 3 2
-    else if(top < middle && bottom > top)
-    {
-        sb(stack_b);
-        rb(stack_b);
-    }
+	if (!stack_a || !*stack_a || !(*stack_a)->top)
+		return ;
+	if (count == 2)
+	{
+		if (!(*stack_a)->top->next)
+			return ;
+		if ((*stack_a)->top->value < (*stack_a)->top->next->value)
+			return ;
+		else
+			ra(stack_a);
+	}
+	else if (count == 3)
+		ft_sort_three_a(stack_a);
 }
-
-void ft_sort_min_a(t_stack **stack_a ,int count)
-{
-    if (!stack_a || !*stack_a || !(*stack_a)->top)
-        return;
-    if(count == 2)
-    {
-        if (!(*stack_a)->top->next)
-            return;
-        if((*stack_a) -> top -> value < (*stack_a) -> top -> next -> value)
-            return;
-        else
-            ra(stack_a);
-    }
-    else if (count == 3)
-        ft_sort_three_a(stack_a);
-}
-
-void ft_sort_min_b(t_stack **stack_b, int count)
-{
-    if(!stack_b || !(*stack_b) || !(*stack_b) -> top)
-        return;
-    if(count == 2)
-    {
-        if(!(*stack_b) -> top -> next)
-            return;
-        if((*stack_b) -> top ->value < (*stack_b) -> top -> next -> value)
-            return;
-        else 
-            rb(stack_b);
-    }
-    else if(count == 3)
-        ft_sort_three_b(stack_b);
-}
-
