@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:19 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/02 12:56:57 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:28:03 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_push_a(t_stack **stack_a, int num)
 	t_node	*temp;
 
 	newnode = malloc(sizeof(t_node));
-	if (newnode == NULL)
+	if (!newnode)
 		return (free_stack(stack_a));
 	newnode->value = num;
 	if ((*stack_a)->top == NULL)

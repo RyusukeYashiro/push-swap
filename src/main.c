@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/02 18:05:06 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:46:53 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_stack_b(t_stack **stack_b)
 
 	temp = (*stack_b)->top;
 	first = temp;
-	printf("%s\n", "this is stack_b");
+	// printf("%s\n", "this is stack_b");
 	printf("%d ", temp->value);
 	temp = temp->next;
 	while (temp != first)
@@ -60,6 +60,12 @@ void	print_stack_b(t_stack **stack_b)
 	}
 	printf("\n");
 }
+
+// __attribute__((destructor)) static void a(void)
+// {
+// 	system("leaks -q push_swap");
+// }
+
 
 int	main(int ac, char *av[])
 {
@@ -71,7 +77,7 @@ int	main(int ac, char *av[])
 
 	stack_a = ft_init_stack();
 	stack_b = ft_init_stack();
-	if (stack_a == NULL || stack_b == NULL)
+	if (!stack_a || !stack_b)
 		return (0);
 	count = 0;
 	error_flag = ft_parse_check_and_push(ac, av, &stack_a, &count);
