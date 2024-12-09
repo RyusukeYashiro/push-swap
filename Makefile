@@ -23,7 +23,7 @@ OBJS    = $(SRCS:.c=.o)
 
 INCLUDES = include
 
-CFLAGS = -Wall -Wextra -Werror -g -O0 -I $(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror -g -O0  -I $(INCLUDES)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
