@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:29 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/02 16:13:01 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/09 23:53:20 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,46 @@ bool	ft_numcheck(char *num)
 	return (true);
 }
 
+bool	ft_check_push(char **args, int *count, t_stack **stack_a, bool flag)
+{
+	long	temp;
+	int		i;
+
+	temp = 0;
+	if (flag)
+		i = 0;
+	else
+		i = 1;
+	while (args[i])
+	{
+		temp = ft_atoi(args[i]);
+		if (!ft_numcheck(args[i]) || !ft_double_check(temp, args, i))
+			return (free_split(args, flag), false);
+		(*count)++;
+		ft_push_a(stack_a, temp);
+		i++;
+	}
+	return (true);
+}
+
 int	ft_parse_check_and_push(int ac, char **av, t_stack **stack_a, int *count)
 {
 	char	**args;
-	int		i;
-	long	temp;
+	bool	flag;
 
-	i = 1;
+	flag = false;
 	if (ac == 2)
 	{
-		i = 0;
 		args = ft_split(av[1], ' ');
+		flag = true;
 		if (!args)
 			return (1);
 	}
 	else
 		args = av;
-	while (args[i])
-	{
-		temp = ft_atoi(args[i]);
-		if (!ft_numcheck(args[i]) || !ft_double_check(temp, args, i))
-			return (1);
-		(*count)++;
-		ft_push_a(stack_a, temp);
-		i++;
-	}
+	if (!ft_check_push(args, count, stack_a, flag))
+		return (1);
+	if (flag)
+		free_split(args, flag);
 	return (0);
 }
