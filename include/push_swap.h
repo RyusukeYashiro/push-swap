@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/09 23:31:38 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/10 18:12:36 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void				ft_sort_check(int pos, int pos_len, t_stack **stack_a,
 void				ft_insert_sort(t_stack **stack_a, t_stack **stack_b,
 						int num);
 void				ft_sort_mid(t_stack **a, t_stack **b, int count);
-int					ft_find_pos_min(t_node *temp, t_stack **a, int min);
 int					ft_find_pos_max(t_node *temp, t_stack **a, int max);
 int					ft_find_pos_bt(t_node *temp, t_stack **a, int num);
 void				free_stack(t_stack **stack);
