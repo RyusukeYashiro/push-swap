@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:58 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/09 23:58:18 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/12 01:22:12 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	free_split(char **args, bool flag)
 {
 	int	i;
 
-	if (flag)
-		i = 0;
+	if (!flag)
+		return;
 	else
-		i = 1;
+		i = 0;
 	while (args[i])
 	{
 		free(args[i]);
