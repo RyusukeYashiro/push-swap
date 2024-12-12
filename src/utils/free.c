@@ -46,7 +46,7 @@ void	free_split(char **args, bool flag)
 	int	i;
 
 	if (!flag)
-		return;
+		return ;
 	else
 		i = 0;
 	while (args[i])

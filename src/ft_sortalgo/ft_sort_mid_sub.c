@@ -6,14 +6,12 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 18:58:19 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/10 18:12:07 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/12 10:34:38 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 #include "../../include/push_swap.h"
-
-
 
 int	ft_find_pos_max(t_node *temp, t_stack **a, int max)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:33:59 by ryyashir          #+#    #+#             */
-/*   Updated: 2024/05/04 14:38:25 by ryyashir         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:29:15 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	overflow_check(int sign, long tmp, long hold)
 	return (0);
 }
 
-int	ft_atoi(const char *string)
+long	ft_atoi(const char *string)
 {
 	int		sign;
 	long	tmp;
@@ -63,13 +63,13 @@ int	ft_atoi(const char *string)
 	{
 		tmp = *string - '0';
 		if (overflow_check(sign, tmp, hold) == 1)
-			return ((int)LONG_MAX);
+			return (LONG_MAX);
 		if (overflow_check(sign, tmp, hold) == -1)
-			return ((int)LONG_MIN);
+			return (LONG_MIN);
 		hold = hold * 10 + tmp;
 		string++;
 	}
-	return ((int)sign * hold);
+	return (sign * hold);
 }
 
 // #include <stdio.h>

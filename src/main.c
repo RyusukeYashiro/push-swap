@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/12 01:23:28 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/12 10:38:24 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ void	print_stack_b(t_stack **stack_b)
 	printf("\n");
 }
 
-__attribute__((destructor)) static void destructor(void)
-{
-	system("leaks -q push_swap");
-}
+// __attribute__((destructor)) static void destructor(void)
+// {
+// 	system("leaks -q push_swap");
+// }
 
 int	main(int ac, char *av[])
 {
-	t_stack		*stack_a;
-	t_stack		*stack_b;
-	bool		sorted_flag;
-	int			error_flag;
-	int			count;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	bool	sorted_flag;
+	int		error_flag;
+	int		count;
 
 	if (ac == 1)
 		return (0);

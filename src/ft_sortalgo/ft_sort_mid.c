@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:33 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/10 18:10:13 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/12 10:35:39 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_insert_sort(t_stack **stack_a, t_stack **stack_b, int num)
 	pos = 0;
 	pos_len = count_stack_len_a(stack_a);
 	if (num < min)
-		pos = 0; 
+		pos = 0;
 	else if (num > max)
 		pos = ft_find_pos_max(temp, stack_a, max);
 	else
@@ -105,7 +105,7 @@ void	ft_sort_mid(t_stack **a, t_stack **b, int count)
 	if (!a || !(*a) || !b || !(*b))
 		return ;
 	if (count == 4)
-		pb(a , b);
+		pb(a, b);
 	else if (count == 5)
 	{
 		pb(a, b);

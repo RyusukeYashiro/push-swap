@@ -6,7 +6,7 @@
 /*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:29 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/09 23:53:20 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/12 10:39:17 by ryusukeyash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ bool	ft_check_push(char **args, int *count, t_stack **stack_a, bool flag)
 	while (args[i])
 	{
 		temp = ft_atoi(args[i]);
+		if (temp > INT_MAX || temp < INT_MIN)
+			return (free_split(args, flag), false);
 		if (!ft_numcheck(args[i]) || !ft_double_check(temp, args, i))
 			return (free_split(args, flag), false);
 		(*count)++;
