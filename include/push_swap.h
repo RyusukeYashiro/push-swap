@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/10 18:12:36 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/28 19:31:03 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ bool				ft_issorted(t_stack *a);
 bool				ft_check_push(char **args, int *count, t_stack **stack_a,
 						bool flag);
 void				free_split(char **args, bool flag);
+int					ft_rotation_check(t_stack **a, t_stack **b, int pos);
 
 #endif

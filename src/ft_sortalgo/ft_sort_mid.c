@@ -3,15 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_mid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:22:33 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/12 10:35:39 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2024/12/28 19:33:07 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/libft.h"
 #include "../../include/push_swap.h"
+
+int	ft_rotation_check(t_stack **a, t_stack **b, int pos)
+{
+	int		next_num;
+	t_node	*temp;
+	int		check_num;
+
+	pos = 0;
+	if (!b || !(*b) || !(*b)->top)
+		return (pos);
+	temp = (*a)->top;
+	next_num = (*b)->top->value;
+	check_num = ft_find_pos_bt(temp, a, next_num);
+	if (check_num == count_stack_len_a(a))
+		return (-1);
+	return (pos);
+}
 
 void	ft_rotation_sort(t_stack **stack_a, int pos)
 {
@@ -48,7 +65,7 @@ void	ft_sort_check(int pos, int pos_len, t_stack **stack_a,
 
 	if (pos == 0 || pos == pos_len)
 		pa(stack_a, stack_b);
-	else if (pos_len / 2 > pos)
+	else if (pos_len / 2 >= pos)
 	{
 		rotations = pos;
 		while (rotations > 0)
@@ -94,8 +111,9 @@ void	ft_insert_sort(t_stack **stack_a, t_stack **stack_b, int num)
 	if (pos >= pos_len)
 		pos = 0;
 	ft_sort_check(pos, pos_len, stack_a, stack_b);
-	pos = 0;
-	ft_rotation_sort(stack_a, pos);
+	pos = ft_rotation_check(stack_a, stack_b, pos);
+	if (pos != -1)
+		ft_rotation_sort(stack_a, pos);
 }
 
 void	ft_sort_mid(t_stack **a, t_stack **b, int count)
