@@ -6,7 +6,7 @@
 /*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:20:17 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/28 19:31:03 by ryyashir         ###   ########.fr       */
+/*   Updated: 2025/01/05 17:09:27 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ bool				ft_double_check(int temp, char **args, int current_i);
 bool				ft_numcheck(char *num);
 int					ft_parse_check_and_push(int ac, char **av,
 						t_stack **stack_a, int *count);
-void				print_stack_a(t_stack **stack_a);
-void				print_stack_b(t_stack **stack_b);
 bool				ft_issorted(t_stack *a);
 bool				ft_check_push(char **args, int *count, t_stack **stack_a,
 						bool flag);

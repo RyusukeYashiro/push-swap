@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:44 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/02 18:32:23 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2025/01/05 17:10:25 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,14 @@ void	ft_sort_stack(t_stack **a, t_stack **b, int count)
 	int	bit;
 
 	bit = 0;
-	printf("count : %d", count);
 	if (count <= 3)
 	{
 		ft_sort_min_a(a, count);
-		printf("in min");
 	}
 	else if (4 <= count && count <= 6)
 	{
 		ft_sort_mid(a, b, count);
-		printf("in mid");
 	}
 	else
 		ft_radix_sort(a, b, count, bit);
-	print_stack_a(a);
 }

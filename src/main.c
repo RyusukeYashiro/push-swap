@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/12 10:38:24 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2025/01/05 17:08:51 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,40 +23,6 @@ t_stack	*ft_init_stack(void)
 		return (NULL);
 	new_stack->top = NULL;
 	return (new_stack);
-}
-
-void	print_stack_a(t_stack **stack_a)
-{
-	t_node	*temp;
-	t_node	*first;
-
-	temp = (*stack_a)->top;
-	first = temp;
-	printf("%d ", temp->value);
-	temp = temp->next;
-	while (temp != first)
-	{
-		printf("%d ", temp->value);
-		temp = temp->next;
-	}
-	printf("\n");
-}
-
-void	print_stack_b(t_stack **stack_b)
-{
-	t_node	*temp;
-	t_node	*first;
-
-	temp = (*stack_b)->top;
-	first = temp;
-	printf("%d ", temp->value);
-	temp = temp->next;
-	while (temp != first)
-	{
-		printf("%d ", temp->value);
-		temp = temp->next;
-	}
-	printf("\n");
 }
 
 // __attribute__((destructor)) static void destructor(void)

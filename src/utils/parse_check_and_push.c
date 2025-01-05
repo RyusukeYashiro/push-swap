@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check_and_push.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryusukeyashiro <ryusukeyashiro@student.    +#+  +:+       +#+        */
+/*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:29 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2024/12/12 10:39:17 by ryusukeyash      ###   ########.fr       */
+/*   Updated: 2025/01/05 17:03:11 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ bool	ft_check_push(char **args, int *count, t_stack **stack_a, bool flag)
 		i = 1;
 	while (args[i])
 	{
+		if ((args[i][0] == '-' || args[i][0] == '+') && ft_strlen(args[i]) == 1)
+			return (free_split(args, flag), false);
 		temp = ft_atoi(args[i]);
 		if (temp > INT_MAX || temp < INT_MIN)
 			return (free_split(args, flag), false);
