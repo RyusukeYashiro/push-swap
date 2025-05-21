@@ -17,10 +17,7 @@ bool	ft_double_check(int temp, char **args, int current_i)
 {
 	int	i;
 
-	if (args[0] == NULL)
-		i = 0;
-	else
-		i = 1;
+	i = 0;
 	while (i < current_i)
 	{
 		if (ft_atoi(args[i]) == temp)
@@ -82,8 +79,11 @@ int	ft_parse_check_and_push(int ac, char **av, t_stack **stack_a, int *count)
 	{
 		args = ft_split(av[1], ' ');
 		flag = true;
-		if (!args)
+		if (!args || !args[0])
+		{
+			free_split(args, flag);
 			return (1);
+		}
 	}
 	else
 		args = av;
