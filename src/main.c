@@ -6,7 +6,7 @@
 /*   By: ryyashir <ryyashir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:23:39 by ryusukeyash       #+#    #+#             */
-/*   Updated: 2025/01/05 17:08:51 by ryyashir         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:36:07 by ryyashir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char *av[])
 	error_flag = ft_parse_check_and_push(ac, av, &stack_a, &count);
 	if (error_flag == 1)
 	{
-		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Error\n", 2);
 		return (free_stack(&stack_a), free_stack(&stack_b), 0);
 	}
 	sorted_flag = ft_issorted(stack_a);

@@ -1,4 +1,4 @@
-NAME = pushSwap.a
+NAME = push_swap
 
 CC = cc
 
@@ -28,17 +28,16 @@ CFLAGS = -Wall -Wextra -Werror -g -O0  -I $(INCLUDES)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
-all : ${NAME}
+all : $(NAME)
 
 LIBFT_PATH = ./Libft
 
 LIBFT_NAME = libft.a
 
 
-$(NAME):$(OBJS)
+$(NAME): $(OBJS)
 	make -C $(LIBFT_PATH) all
-	ar -rcs $(NAME) $(OBJS)
-	$(CC) $(CFLAGS) src/main.c $(NAME) $(LIBFT_PATH)/$(LIBFT_NAME) -o push_swap
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_PATH)/$(LIBFT_NAME) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -46,7 +45,6 @@ clean:
 
 fclean: clean 
 		rm -f $(NAME)
-		rm -f push_swap
 		rm -f $(LIBFT_PATH)/$(LIBFT_NAME)
 		
 re:  fclean all
