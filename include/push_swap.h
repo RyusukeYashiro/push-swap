@@ -65,7 +65,8 @@ int					count_stack_len_b(t_stack **stack_b);
 void				ft_push_a(t_stack **stack_a, int num);
 int					stack_a_min(t_stack **stack_a);
 int					stack_a_max(t_stack **stack_a);
-bool				ft_double_check(int temp, char **args, int current_i);
+bool				ft_double_check(int temp, char **args, int current_i,
+						bool flag);
 bool				ft_numcheck(char *num);
 int					ft_parse_check_and_push(int ac, char **av,
 						t_stack **stack_a, int *count);

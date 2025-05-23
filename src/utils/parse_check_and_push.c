@@ -13,11 +13,14 @@
 #include "../../include/libft.h"
 #include "../include/push_swap.h"
 
-bool	ft_double_check(int temp, char **args, int current_i)
+bool	ft_double_check(int temp, char **args, int current_i, bool flag)
 {
 	int	i;
 
-	i = 0;
+	if (flag)
+		i = 0;
+	else
+		i = 1;
 	while (i < current_i)
 	{
 		if (ft_atoi(args[i]) == temp)
@@ -60,7 +63,7 @@ bool	ft_check_push(char **args, int *count, t_stack **stack_a, bool flag)
 		temp = ft_atoi(args[i]);
 		if (temp > INT_MAX || temp < INT_MIN)
 			return (free_split(args, flag), false);
-		if (!ft_numcheck(args[i]) || !ft_double_check(temp, args, i))
+		if (!ft_numcheck(args[i]) || !ft_double_check(temp, args, i, flag))
 			return (free_split(args, flag), false);
 		(*count)++;
 		ft_push_a(stack_a, temp);
